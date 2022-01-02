@@ -31,7 +31,7 @@ app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // adding route files to our app
-app.use('/', indexRouter);
+app.use('/home', indexRouter);
 app.use('/users', usersRouter);
 app.use('/plants', plantsRouter);
 
