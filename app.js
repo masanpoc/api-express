@@ -11,9 +11,11 @@ var logger = require('morgan');
 
 
 // importing route files
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var plantsRouter = require('./routes/plants');
+// avg tmp router
+var avgRouter = require('./routes/avg');
+// rain days router
+var rainRouter = require('./routes/rain');
+ 
 
 // The app variable contains all of the settings and routes for your application. This object glues together your application
 var app = express();
@@ -31,11 +33,10 @@ app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // adding route files to our app
-app.use('/home', indexRouter);
-app.use('/users', usersRouter);
-app.use('/plants', plantsRouter);
+app.use('/avg', avgRouter);
+app.use('/rain', rainRouter);
 
-// catch 404 and forward to error handler
+// catch 404 and forward to error handler 
 app.use(function(req, res, next) {
   next(createError(404));
 });
