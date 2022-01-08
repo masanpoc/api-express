@@ -11,11 +11,9 @@ var logger = require('morgan');
 
 
 // importing route files
-// avg tmp router
-var avgRouter = require('./routes/avg');
-// rain days router
-var rainRouter = require('./routes/rain');
- 
+// mysql data
+var weatherMySQLRouter = require('./routes/weather_mysql');
+var weatherAPIRouter = require('./routes/weather_api');
 
 // The app variable contains all of the settings and routes for your application. This object glues together your application
 var app = express();
@@ -33,8 +31,8 @@ app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
 // adding route files to our app
-app.use('/avg', avgRouter);
-app.use('/rain', rainRouter);
+app.use('/weather-my-sql-router', weatherMySQLRouter);
+app.use('/weather-api', weatherAPIRouter);
 
 // catch 404 and forward to error handler 
 app.use(function(req, res, next) {
